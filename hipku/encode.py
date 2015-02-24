@@ -91,13 +91,6 @@ def encode_words(factor_array, is_ipv6):
 
 
 def get_key(is_ipv6):
-    # if is_ipv6:
-    #     key = ['adjectives', 'nouns', 'adjectives', 'nouns', 'verbs', 'adjectives',
-    #            'adjectives', 'adjectives', 'adjectives', 'adjectives', 'nouns',
-    #            'adjectives', 'nouns', 'verbs', 'adjectives', 'nouns']
-    # else:
-    #     key = ['animalAdjectives', 'animalColors', 'animalNouns', 'animalVerbs',
-    #            'natureAdjectives', 'natureNouns', 'plantNouns', 'plantVerbs']
     if is_ipv6:
         key = [adjectives, nouns, adjectives, nouns, verbs, adjectives,
                adjectives, adjectives, adjectives, adjectives, nouns,
@@ -123,18 +116,16 @@ def write_haiku(word_array, is_ipv6):
                 schema[j] = word_array[i]
                 break
     # Capitalize appropriate words.
-    schema = capitalize_haiku(schema, non_words)
+    schema = capitalize_haiku(schema)
     haiku = ''.join(schema)
     return haiku
 
 
 def get_schema(is_ipv6, octet):
-    # schema = []
     new_line = '\n'
     period = '.'
     space = ' '
     non_words = [new_line, period, space]
-
     if is_ipv6:
         schema = [octet, octet, 'and', octet, octet, new_line, octet, octet,
                   octet, octet, octet, octet, octet, period, new_line, octet,
@@ -161,7 +152,7 @@ def get_schema(is_ipv6, octet):
     return [schema, non_words]
 
 
-def capitalize_haiku(haiku_array, non_words):
+def capitalize_haiku(haiku_array):
     period = '.'
     # Always capitalize the first word.
     haiku_array[0] = capitalize(haiku_array[0])
@@ -171,12 +162,8 @@ def capitalize_haiku(haiku_array, non_words):
             # be a newLine or a space, so check two positions after and
             # capitalize that entry, so long as it's a word.
             is_word = False
-            # if i+2 > len(haiku_array) or haiku_array[i+2] == '':
             if i+2 < len(haiku_array):
                 is_word = True
-            # for j in range(len(non_words)):
-            #     if haiku_array[i+2] == non_words[j]:
-            #         is_word = False
             if is_word:
                 haiku_array[i+2] = capitalize(haiku_array[i+2])
     return haiku_array
