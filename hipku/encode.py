@@ -157,13 +157,9 @@ def capitalize_haiku(haiku_array):
     # Always capitalize the first word.
     haiku_array[0] = capitalize(haiku_array[0])
     for i in range(1, len(haiku_array)):
-        if haiku_array[i] == period:
+        if haiku_array[i] == period and i+2 < len(haiku_array):
             # If the current entry is a period then the next entry will
             # be a newLine or a space, so check two positions after and
             # capitalize that entry, so long as it's a word.
-            is_word = False
-            if i+2 < len(haiku_array):
-                is_word = True
-            if is_word:
-                haiku_array[i+2] = capitalize(haiku_array[i+2])
+            haiku_array[i+2] = capitalize(haiku_array[i+2])
     return haiku_array
