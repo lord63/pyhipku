@@ -7,6 +7,7 @@ from dictionary import *
 
 
 def encode(ip):
+    """Encode IP addressed as hiaku"""
     is_ipv6 = ip_is_ipv6(ip)
     decimal_octect_array = split_ip(ip, is_ipv6)
     factord_octet_array = factor_octets(decimal_octect_array, is_ipv6)
@@ -16,6 +17,7 @@ def encode(ip):
 
 
 def ip_is_ipv6(ip):
+    """IP address is IPv6 or not, return True if it is"""
     if ip.find(':') != -1:
         return True
     elif ip.find('.') != -1:
@@ -26,6 +28,7 @@ def ip_is_ipv6(ip):
 
 
 def split_ip(ip, is_ipv6):
+    """Split IP address and convert to integer"""
     if is_ipv6:
         separator = ':'
         octet_num = 8
@@ -54,6 +57,7 @@ def split_ip(ip, is_ipv6):
 
 
 def pad_octets(octet_array, octet_missing_num):
+    """Pad appropriate number of 0 octects if IPv6 is abbreviated"""
     padded_octect = 0
     length = len(octet_array)
     # If the first or last octect is blank, zero them.
@@ -71,6 +75,8 @@ def pad_octets(octet_array, octet_missing_num):
 
 
 def factor_octets(octet_array, is_ipv6):
+    """Convert each decimal octet into a factor of the
+    divisor (16 or 256) and a remainder"""
     if is_ipv6:
         divisor = 256
     else:
@@ -83,6 +89,7 @@ def factor_octets(octet_array, is_ipv6):
 
 
 def encode_words(factor_array, is_ipv6):
+    """Get a word array from the dictionary according to the factor_array"""
     key = get_key(is_ipv6)
     encoded_word_array = []
     for i in range(len(factor_array)):
@@ -91,6 +98,8 @@ def encode_words(factor_array, is_ipv6):
 
 
 def get_key(is_ipv6):
+    """Return an array of dictionaries representing the correct word
+    order for the haiku"""
     if is_ipv6:
         key = [adjectives, nouns, adjectives, nouns, verbs, adjectives,
                adjectives, adjectives, adjectives, adjectives, nouns,
@@ -102,6 +111,7 @@ def get_key(is_ipv6):
 
 
 def write_haiku(word_array, is_ipv6):
+    """Return the beautiful haiku"""
     # String to place in schema to show word slot.
     octct = 'OCTET'
     schema_results = get_schema(is_ipv6, octct)
@@ -122,6 +132,7 @@ def write_haiku(word_array, is_ipv6):
 
 
 def get_schema(is_ipv6, octet):
+    """Get the template with word slots"""
     new_line = '\n'
     period = '.'
     space = ' '
@@ -153,6 +164,7 @@ def get_schema(is_ipv6, octet):
 
 
 def capitalize_haiku(haiku_array):
+    """Capitalize appropriate words in haiku"""
     period = '.'
     # Always capitalize the first word.
     haiku_array[0] = capitalize(haiku_array[0])
