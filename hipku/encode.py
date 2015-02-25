@@ -114,9 +114,7 @@ def write_haiku(word_array, is_ipv6):
     """Return the beautiful haiku"""
     # String to place in schema to show word slot.
     octct = 'OCTET'
-    schema_results = get_schema(is_ipv6, octct)
-    schema = schema_results[0]
-    non_words = schema_results[1]
+    schema = get_schema(is_ipv6, octct)
 
     # Replace each instance of 'octet' in the schema with a word from
     # the encoded word array.
@@ -150,17 +148,16 @@ def get_schema(is_ipv6, octet):
     for i in range(1, len(schema)):
         i = i + space_num
         insert_space = True
-        # If the next entry is a nonWord, don't add a space.
-        for j in range(len(non_words)):
-            if schema[i] == non_words[j]:
-                insert_space = False
+        # If the current entry is a nonWord, don't add a space.
+        if schema[i] in non_words:
+            insert_space = False
         # If the previous entry is a newLine, don't add a space.
         if schema[i-1] == new_line:
             insert_space = False
         if insert_space:
             schema.insert(i, space)
             space_num = space_num + 1
-    return [schema, non_words]
+    return schema
 
 
 def capitalize_haiku(haiku_array):
