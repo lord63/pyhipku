@@ -7,6 +7,7 @@ from dictionary import *
 
 
 def decode(haiku):
+    """Decode haiku as IP address"""
     word_array = split_haiku(haiku)
     is_ipv6 = haiku_is_ipv6(word_array)
     factor_array = get_factors(word_array, is_ipv6)
@@ -16,11 +17,13 @@ def decode(haiku):
 
 
 def split_haiku(haiku):
+    """Split haiku, remove the period and new_line"""
     word_array = lower(haiku).replace('.', '').split()
     return word_array
 
 
 def haiku_is_ipv6(word_array):
+    """Weather haiku is converted from IPv6 or not, return True if it is"""
     if word_array[0] == 'the':
         is_ipv6 = False
     else:
@@ -42,16 +45,19 @@ def get_key(is_ipv6):
 
 
 def get_factors(word_array, is_ipv6):
+    """Return an array of factors and remainders for each encoded word"""
     key = get_key(is_ipv6)
+    # Remove the useless words, make sure there is a one-to-one match
+    # between word_array and key.
     if is_ipv6:
         word_array.remove('and')
     else:
         word_array.remove('the')
         word_array.remove('in')
         word_array.remove('the')
+        # Plant_nouns may have 1~3 words, join them into one.
         word_array.insert(6, ' '.join(word_array[6:-1]))
         del word_array[7:-1]
-
     factor_array = []
     for i in range(len(key)):
         factor_array.append(key[i].index(word_array[i]))
@@ -59,6 +65,7 @@ def get_factors(word_array, is_ipv6):
 
 
 def get_octets(factor_array, is_ipv6):
+    """Return an array of octects for each pair of factor and remainder"""
     if is_ipv6:
         multiplier = 256
     else:
@@ -75,6 +82,7 @@ def get_octets(factor_array, is_ipv6):
 
 
 def get_ip_string(octct_array, is_ipv6):
+    """Get the ip string, yeah"""
     if is_ipv6:
         separator = ':'
     else:
