@@ -7,7 +7,7 @@ from dictionary import *
 
 
 def encode(ip):
-    """Encode IP addressed as hiaku"""
+    """Encode IP address as hiaku"""
     is_ipv6 = ip_is_ipv6(ip)
     decimal_octect_array = split_ip(ip, is_ipv6)
     factord_octet_array = factor_octets(decimal_octect_array, is_ipv6)
@@ -35,7 +35,7 @@ def split_ip(ip, is_ipv6):
     else:
         separator = '.'
         octet_num = 4
-    # Remove newline and space characters.
+    # Remove new_line and space characters.
     ip = ''.join(ip.split())
     octet_array = ip.split(separator)
     # Replace missing octect with 0 if IPv6 address is in abbreviated fomat.
@@ -46,7 +46,7 @@ def split_ip(ip, is_ipv6):
         else:
             raise ValueError("Formatting error in IP address input. "
                              "IPv4 address has fewer than 4 octets.")
-    # Convert IPv6 address from hex to decimal
+    # Convert IPv6 address from hex to decimal.
     decimal_octect_array = []
     if is_ipv6:
         for i in range(len(octet_array)):
@@ -148,10 +148,10 @@ def get_schema(is_ipv6, octet):
     for i in range(1, len(schema)):
         i = i + space_num
         insert_space = True
-        # If the current entry is a nonWord, don't add a space.
+        # If the current entry is a non_word, don't add a space.
         if schema[i] in non_words:
             insert_space = False
-        # If the previous entry is a newLine, don't add a space.
+        # If the previous entry is a new_line, don't add a space.
         if schema[i-1] == new_line:
             insert_space = False
         if insert_space:
@@ -168,7 +168,7 @@ def capitalize_haiku(haiku_array):
     for i in range(1, len(haiku_array)):
         if haiku_array[i] == period and i+2 < len(haiku_array):
             # If the current entry is a period then the next entry will
-            # be a newLine or a space, so check two positions after and
+            # be a new_line or a space, so check two positions after and
             # capitalize that entry, so long as it's a word.
             haiku_array[i+2] = capitalize(haiku_array[i+2])
     return haiku_array
