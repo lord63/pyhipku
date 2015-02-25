@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from hipku import encode
-from hipku import decode
+from pyhipku import encode
+from pyhipku import decode
 
 def test_ipv4():
     assert decode(encode('0.0.0.0')) == '0.0.0.0'

@@ -3,7 +3,7 @@
 
 from setuptools import setup
 
-import hipku
+import pyhipku
 
 
 try:
@@ -15,15 +15,15 @@ except (IOError, ImportError):
 
 
 setup(
-    name='hipku',
-    version=hipku.__version__,
-    url='http://github.com/lord63/hipku.py/',
+    name='pyhipku',
+    version=pyhipku.__version__,
+    url='http://github.com/lord63/pyhipku/',
     license='MIT',
     author='lord63',
     author_email='lord63.j@gmail.com',
     description='Encode any IP address as a haiku',
     long_description=long_description,
-    packages=['hipku'],
+    packages=['pyhipku'],
     include_package_data=True,
     keywords='ip haiku',
     classifiers=[
