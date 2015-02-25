@@ -46,7 +46,6 @@ def split_ip(ip, is_ipv6):
         else:
             raise ValueError("Formatting error in IP address input. "
                              "IPv4 address has fewer than 4 octets.")
-    # Convert IPv6 address from hex to decimal.
     decimal_octect_array = []
     if is_ipv6:
         for i in range(len(octet_array)):
@@ -58,7 +57,7 @@ def split_ip(ip, is_ipv6):
 
 def pad_octets(octet_array, octet_missing_num):
     """Pad appropriate number of 0 octects if IPv6 is abbreviated"""
-    padded_octect = 0
+    padded_octect = '0'
     length = len(octet_array)
     # If the first or last octect is blank, zero them.
     if octet_array[0] == '':
