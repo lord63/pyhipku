@@ -34,6 +34,6 @@ MIT
 [2]: https://pypi.python.org/pypi/pyhipku
 [3]: https://travis-ci.org/lord63/pyhipku.svg
 [4]: https://travis-ci.org/lord63/pyhipku
-[5]: https://img.shields.io/coveralls/lord63/pyhipku.svg
+[5]: https://coveralls.io/repos/lord63/pyhipku/badge.svg
 [6]: https://coveralls.io/r/lord63/pyhipku
 [7]: https://github.com/gabemart/hipku
