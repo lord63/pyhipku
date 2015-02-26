@@ -7,7 +7,7 @@ before_install:
     - pip install coveralls
 
 script:
-    - nosetest -v --with-coverage
+    - nosetests -v --with-coverage
 
 after_success:
     - coveralls
