@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from __future__ import absolute_import
+from __future__ import absolute_import, division
 
 from .dictionary import *
 
@@ -82,7 +82,7 @@ def factor_octets(octet_array, is_ipv6):
         divisor = 16
     factord_octet_array = []
     for i in list(range(len(octet_array))):
-        factord_octet_array.extend([octet_array[i] / divisor,
+        factord_octet_array.extend([octet_array[i] // divisor,
                                     octet_array[i] % divisor])
     return factord_octet_array
 
