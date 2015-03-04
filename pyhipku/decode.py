@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import absolute_import
-from string import lower
 
 from .dictionary import *
 
@@ -19,7 +18,7 @@ def decode(haiku):
 
 def split_haiku(haiku):
     """Split haiku, remove the period and new_line"""
-    word_array = lower(haiku).replace('.', '').split()
+    word_array = haiku.lower().replace('.', '').split()
     return word_array
 
 

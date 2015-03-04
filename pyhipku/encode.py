@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import absolute_import
-from string import capitalize
 
 from .dictionary import *
 
@@ -164,11 +163,11 @@ def capitalize_haiku(haiku_array):
     """Capitalize appropriate words in haiku"""
     period = '.'
     # Always capitalize the first word.
-    haiku_array[0] = capitalize(haiku_array[0])
+    haiku_array[0] = haiku_array[0].capitalize()
     for i in list(range(1, len(haiku_array))):
         if haiku_array[i] == period and i+2 < len(haiku_array):
             # If the current entry is a period then the next entry will
             # be a new_line or a space, so check two positions after and
             # capitalize that entry, so long as it's a word.
-            haiku_array[i+2] = capitalize(haiku_array[i+2])
+            haiku_array[i+2] = haiku_array[i+2].capitalize()
     return haiku_array
