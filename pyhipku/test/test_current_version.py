@@ -8,6 +8,7 @@ haiku match IPs for the current dictionaries and schema. These tests
 must be updated whenever the dictionaries or schema are changed.
 """
 
+from __future__ import absolute_import
 import unittest
 
 from pyhipku import encode
@@ -38,17 +39,17 @@ class PyhipkuTestCase(unittest.TestCase):
         ]
 
     def test_ipv4_encode(self):
-        for i in range(len(self.ipv4_pairs)):
+        for i in list(range(len(self.ipv4_pairs))):
             assert encode(self.ipv4_pairs[i][0]) == self.ipv4_pairs[i][1]
 
     def test_ipv6_encode(self):
-        for i in range(len(self.ipv6_pairs)):
+        for i in list(range(len(self.ipv6_pairs))):
             assert encode(self.ipv6_pairs[i][0]) == self.ipv6_pairs[i][1]
 
     def test_ipv4_decode(self):
-        for i in range(len(self.ipv4_pairs)):
+        for i in list(range(len(self.ipv4_pairs))):
             assert decode(self.ipv4_pairs[i][1]) == self.ipv4_pairs[i][0]
 
     def test_ipv6_decode(self):
-        for i in range(len(self.ipv6_pairs)):
+        for i in list(range(len(self.ipv6_pairs))):
             assert decode(self.ipv6_pairs[i][1]) == self.ipv6_pairs[i][0]

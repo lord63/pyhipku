@@ -7,9 +7,11 @@ again, it matches the original address. These tests are applicable to
 all versions of Hipku, regardless of changes to the dictionaries or schema.
 """
 
+from __future__ import absolute_import
 
 from pyhipku import encode
 from pyhipku import decode
+
 
 def test_ipv4():
     assert decode(encode('0.0.0.0')) == '0.0.0.0'
