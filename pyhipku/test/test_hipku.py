@@ -1,6 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+Test that when you take an IP address, encode it, and then decode it
+again, it matches the original address. These tests are applicable to
+all versions of Hipku, regardless of changes to the dictionaries or schema.
+"""
+
+
 from pyhipku import encode
 from pyhipku import decode
 
