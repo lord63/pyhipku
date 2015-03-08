@@ -16,7 +16,7 @@ This a python port of [hipku][7](javascript).
 Encode the IP address to haiku
 
     >>> from pyhipku import encode
-    >>> print encode('127.0.0.1')
+    >>> print(encode('127.0.0.1'))
     The hungry white ape
     aches in the ancient canyon.
     Autumn colors crunch.
