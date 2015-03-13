@@ -24,10 +24,12 @@ def split_haiku(haiku):
 
 def haiku_is_ipv6(word_array):
     """Weather haiku is converted from IPv6 or not, return True if it is"""
-    if word_array[0] == 'the':
+    if word_array[0] == 'the' and len(word_array) in [12, 13, 14]:
         is_ipv6 = False
-    else:
+    elif len(word_array) == 17:
         is_ipv6 = True
+    else:
+        raise ValueError("Illeage haiku")
     return is_ipv6
 
 
@@ -60,7 +62,10 @@ def get_factors(word_array, is_ipv6):
         del word_array[7:-1]
     factor_array = []
     for i in list(range(len(key))):
-        factor_array.append(key[i].index(word_array[i]))
+        try:
+            factor_array.append(key[i].index(word_array[i]))
+        except ValueError as e:
+            raise ValueError("Check the invalid word: {0}".format(e.args[0]))
     return factor_array
 
 

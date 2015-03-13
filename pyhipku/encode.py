@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import absolute_import, division
+import socket
 
 from .dictionary import *
 
@@ -31,21 +32,23 @@ def split_ip(ip, is_ipv6):
     """Split IP address and convert to integer"""
     if is_ipv6:
         separator = ':'
-        octet_num = 8
     else:
         separator = '.'
-        octet_num = 4
     # Remove new_line and space characters.
     ip = ''.join(ip.split())
+    # Validate the IP addresss.
+    try:
+        if is_ipv6:
+            socket.inet_pton(socket.AF_INET6, ip)
+        else:
+            socket.inet_pton(socket.AF_INET, ip)
+    except (OSError, socket.error):
+        raise ValueError("Illegal IP address.")
     octet_array = ip.split(separator)
     # Replace missing octect with 0 if IPv6 address is in abbreviated fomat.
-    if len(octet_array) < octet_num:
-        if is_ipv6:
-            octet_missing_num = octet_num - len(octet_array)
-            octet_array = pad_octets(octet_array, octet_missing_num)
-        else:
-            raise ValueError("Formatting error in IP address input. "
-                             "IPv4 address has fewer than 4 octets.")
+    if len(octet_array) < 8 and is_ipv6:
+        octet_missing_num = 8 - len(octet_array)
+        octet_array = pad_octets(octet_array, octet_missing_num)
     decimal_octect_array = []
     if is_ipv6:
         for i in list(range(len(octet_array))):
