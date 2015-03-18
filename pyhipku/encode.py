@@ -4,7 +4,12 @@
 from __future__ import absolute_import, division
 import socket
 
-from .dictionary import *
+from .dictionary import (adjectives, nouns, adjectives, nouns, verbs,
+                         adjectives, adjectives, adjectives, adjectives,
+                         adjectives, nouns, adjectives, nouns, verbs,
+                         adjectives, nouns, animal_adjectives, animal_colors,
+                         animal_nouns, animal_verbs, nature_adjectives,
+                         nature_nouns, plant_nouns, plant_verbs)
 
 
 def encode(ip):
