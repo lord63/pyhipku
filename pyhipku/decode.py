@@ -34,7 +34,7 @@ def haiku_is_ipv6(word_array):
     elif len(word_array) == 17:
         is_ipv6 = True
     else:
-        raise ValueError("Illeage haiku")
+        raise ValueError("Illegal haiku")
     return is_ipv6
 
 
