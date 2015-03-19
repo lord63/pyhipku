@@ -66,7 +66,7 @@ def get_factors(word_array, is_ipv6):
         word_array.insert(6, ' '.join(word_array[6:-1]))
         del word_array[7:-1]
     factor_array = []
-    for i in list(range(len(key))):
+    for i in range(len(key)):
         try:
             factor_array.append(key[i].index(word_array[i]))
         except ValueError as e:
@@ -81,7 +81,7 @@ def get_octets(factor_array, is_ipv6):
     else:
         multiplier = 16
     octet_array = []
-    for i in list(range(0, len(factor_array), 2)):
+    for i in range(0, len(factor_array), 2):
         result = factor_array[i]*multiplier + factor_array[i+1]
         if is_ipv6:
             origin = hex(result)[2:]

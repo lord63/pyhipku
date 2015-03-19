@@ -56,7 +56,7 @@ def split_ip(ip, is_ipv6):
         octet_array = pad_octets(octet_array, octet_missing_num)
     decimal_octect_array = []
     if is_ipv6:
-        for i in list(range(len(octet_array))):
+        for i in range(len(octet_array)):
             decimal_octect_array.append(int(octet_array[i], 16))
     else:
         decimal_octect_array = [int(num) for num in octet_array]
@@ -73,10 +73,10 @@ def pad_octets(octet_array, octet_missing_num):
     if octet_array[length - 1] == '':
         octet_array[length - 1] = padded_octect
     # Check the rest of the array for blank octects and pad as needed.
-    for i in list(range(length)):
+    for i in range(length):
         if octet_array[i] == '':
             octet_array[i] = padded_octect
-            for j in list(range(octet_missing_num)):
+            for j in range(octet_missing_num):
                 octet_array.insert(i, padded_octect)
     return octet_array
 
@@ -89,7 +89,7 @@ def factor_octets(octet_array, is_ipv6):
     else:
         divisor = 16
     factord_octet_array = []
-    for i in list(range(len(octet_array))):
+    for i in range(len(octet_array)):
         factord_octet_array.extend([octet_array[i] // divisor,
                                     octet_array[i] % divisor])
     return factord_octet_array
@@ -99,7 +99,7 @@ def encode_words(factor_array, is_ipv6):
     """Get a word array from the dictionary according to the factor_array"""
     key = get_key(is_ipv6)
     encoded_word_array = []
-    for i in list(range(len(factor_array))):
+    for i in range(len(factor_array)):
         encoded_word_array.append(key[i][factor_array[i]])
     return encoded_word_array
 
@@ -125,8 +125,8 @@ def write_haiku(word_array, is_ipv6):
 
     # Replace each instance of 'octet' in the schema with a word from
     # the encoded word array.
-    for i in list(range(len(word_array))):
-        for j in list(range(len(schema))):
+    for i in range(len(word_array)):
+        for j in range(len(schema)):
             if schema[j] == octct:
                 schema[j] = word_array[i]
                 break
@@ -152,7 +152,7 @@ def get_schema(is_ipv6, octet):
                   new_line]
     space_num = 0
     # Add spaces before words except the first word.
-    for i in list(range(1, len(schema))):
+    for i in range(1, len(schema)):
         i = i + space_num
         insert_space = True
         # If the current entry is a non_word, don't add a space.
@@ -172,7 +172,7 @@ def capitalize_haiku(haiku_array):
     period = '.'
     # Always capitalize the first word.
     haiku_array[0] = haiku_array[0].capitalize()
-    for i in list(range(1, len(haiku_array))):
+    for i in range(1, len(haiku_array)):
         if haiku_array[i] == period and i+2 < len(haiku_array):
             # If the current entry is a period then the next entry will
             # be a new_line or a space, so check two positions after and

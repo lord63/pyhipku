@@ -39,22 +39,22 @@ class PyhipkuTestCase(unittest.TestCase):
         ]
 
     def test_ipv4_encode(self):
-        for i in list(range(len(self.ipv4_pairs))):
+        for i in range(len(self.ipv4_pairs)):
             self.assertEqual(encode(self.ipv4_pairs[i][0]),
                              self.ipv4_pairs[i][1])
 
     def test_ipv6_encode(self):
-        for i in list(range(len(self.ipv6_pairs))):
+        for i in range(len(self.ipv6_pairs)):
             self.assertEqual(encode(self.ipv6_pairs[i][0]),
                              self.ipv6_pairs[i][1])
 
     def test_ipv4_decode(self):
-        for i in list(range(len(self.ipv4_pairs))):
+        for i in range(len(self.ipv4_pairs)):
             self.assertEqual(decode(self.ipv4_pairs[i][1]),
                              self.ipv4_pairs[i][0])
 
     def test_ipv6_decode(self):
-        for i in list(range(len(self.ipv6_pairs))):
+        for i in range(len(self.ipv6_pairs)):
             self.assertEqual(decode(self.ipv6_pairs[i][1]),
                              self.ipv6_pairs[i][0])
 
