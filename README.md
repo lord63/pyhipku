@@ -27,6 +27,10 @@ Decode haiku to IP address
     >>> decode('The hungry white ape\naches in the ancient canyon.\nAutumn colors crunch.\n')
     '127.0.0.1'
 
+## About the website
+
+The source code for the demo is [here][].
+
 ## License
 
 MIT
@@ -39,3 +43,4 @@ MIT
 [5]: https://coveralls.io/repos/lord63/pyhipku/badge.svg
 [6]: https://coveralls.io/r/lord63/pyhipku
 [7]: https://github.com/gabemart/hipku
+[here]: https://github.com/lord63/pyhipku_web
