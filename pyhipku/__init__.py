@@ -12,10 +12,12 @@
 """
 
 from __future__ import absolute_import
-from .encode import *
-from .decode import *
+
+from .encode import encode
+from .decode import decode
 
 
+__all__ = ["encode", "decode"]
 __title__ = "hipku"
 __version__ = "0.2.1"
 __author__ = "lord63"
