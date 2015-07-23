@@ -27,6 +27,11 @@ Decode haiku to IP address
     >>> decode('The hungry white ape\naches in the ancient canyon.\nAutumn colors crunch.\n')
     '127.0.0.1'
 
+## Run the tests
+
+    $ pip install nose coveralls
+    $ nosetests -v --with-coverage --cover-package=pyhipku
+
 ## About the website
 
 The source code for the demo is [here][].
