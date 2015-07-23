@@ -1,3 +1,8 @@
+2015.07.23 v0.2.2
+- no more wild import.
+- fix the import in encode.py and decode.py.
+- fix typo when raise an error for illegal haiku.
+
 2015.03.13 v0.2.1
 - Better exception handle.
 
