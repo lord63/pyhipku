@@ -11,7 +11,7 @@ from .dictionary import (adjectives, nouns, verbs, animal_adjectives,
 
 
 def encode(ip):
-    """Encode IP address as hiaku"""
+    """Encode IP address as haiku"""
     is_ipv6 = ip_is_ipv6(ip)
     decimal_octect_array = split_ip(ip, is_ipv6)
     factord_octet_array = factor_octets(decimal_octect_array, is_ipv6)
@@ -39,7 +39,7 @@ def split_ip(ip, is_ipv6):
         separator = '.'
     # Remove new_line and space characters.
     ip = ''.join(ip.split())
-    # Validate the IP addresss.
+    # Validate the IP address.
     try:
         if is_ipv6:
             socket.inet_pton(socket.AF_INET6, ip)
@@ -48,7 +48,7 @@ def split_ip(ip, is_ipv6):
     except (OSError, socket.error):
         raise ValueError("Illegal IP address.")
     octet_array = ip.split(separator)
-    # Replace missing octect with 0 if IPv6 address is in abbreviated fomat.
+    # Replace missing octect with 0 if IPv6 address is in abbreviated format.
     if len(octet_array) < 8 and is_ipv6:
         octet_missing_num = 8 - len(octet_array)
         octet_array = pad_octets(octet_array, octet_missing_num)
@@ -62,7 +62,7 @@ def split_ip(ip, is_ipv6):
 
 
 def pad_octets(octet_array, octet_missing_num):
-    """Pad appropriate number of 0 octects if IPv6 is abbreviated"""
+    """Pad appropriate number of 0 octets if IPv6 is abbreviated"""
     padded_octect = '0'
     length = len(octet_array)
     # If the first or last octect is blank, zero them.
@@ -70,7 +70,7 @@ def pad_octets(octet_array, octet_missing_num):
         octet_array[0] = padded_octect
     if octet_array[length - 1] == '':
         octet_array[length - 1] = padded_octect
-    # Check the rest of the array for blank octects and pad as needed.
+    # Check the rest of the array for blank octets and pad as needed.
     for i in range(length):
         if octet_array[i] == '':
             octet_array[i] = padded_octect

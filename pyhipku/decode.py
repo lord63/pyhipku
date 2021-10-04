@@ -73,7 +73,7 @@ def get_factors(word_array, is_ipv6):
 
 
 def get_octets(factor_array, is_ipv6):
-    """Return an array of octects for each pair of factor and remainder"""
+    """Return an array of octets for each pair of factor and remainder"""
     if is_ipv6:
         multiplier = 256
     else:
